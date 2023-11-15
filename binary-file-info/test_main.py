@@ -3,38 +3,91 @@ from unittest import TestCase
 import unittest
 from main import file_info
 
+
 class Test(TestCase):
     def test_no_exist(self):
         pass
-    
+
     def test_pdf(self):
-        info = file_info('assets/test01.pdf')
-        self.assertEqual(info, 
-"""File Statistics:
+        info = file_info("assets/test01.pdf")
+        self.assertEqual(
+            info,
+            """File Statistics:
 File Name: assets/test01.pdf
-File Size: 33.88 KB
-File Type: PDF""")
-        
+File Size: 33.879 KB
+File Type: PDF""",
+        )
+
     def test_gif(self):
-        pass
-    
+        info = file_info("assets/test02.gif")
+        self.assertEqual(
+            info,
+            """File Statistics:
+File Name: assets/test02.gif
+File Size: 41.016 KB
+File Type: GIF""",
+        )
+
     def test_png(self):
-        pass
-    
+        info = file_info("assets/test03.png")
+        self.assertEqual(
+            info,
+            """File Statistics:
+File Name: assets/test03.png
+File Size: 39.206 KB
+File Type: PNG""",
+        )
+
     def test_jpeg(self):
-        pass
-    
+        info = file_info("assets/test04.jpeg")
+        self.assertEqual(
+            info,
+            """File Statistics:
+File Name: assets/test04.jpeg
+File Size: 415.854 KB
+File Type: JPEG""",
+        )
+
     def test_deceptive_txt(self):
-        pass
-    
+        info = file_info("assets/deceptive01.txt")
+        self.assertEqual(
+            info,
+            """File Statistics:
+File Name: assets/deceptive01.txt
+File Size: 0.01 KB
+File Type: Unknown file type""",
+        )
+
     def test_deceptive_png(self):
-        pass
-    
+        info = file_info("assets/deceptive02.png")
+        self.assertEqual(
+            info,
+            """File Statistics:
+File Name: assets/deceptive02.png
+File Size: 415.854 KB
+File Type: JPEG""",
+        )
+
     def test_deceptive_pdf(self):
-        pass
-    
+        info = file_info("assets/deceptive03.pdf")
+        self.assertEqual(
+            info,
+            """File Statistics:
+File Name: assets/deceptive03.pdf
+File Size: 41.016 KB
+File Type: GIF""",
+        )
+
     def test_deceptive_txt_4(self):
-        pass
-    
-if __name__ == '__main__':
+        info = file_info("assets/deceptive04.txt")
+        self.assertEqual(
+            info,
+            """File Statistics:
+File Name: assets/deceptive04.txt
+File Size: 39.206 KB
+File Type: PNG""",
+        )
+
+
+if __name__ == "__main__":
     unittest.main()
